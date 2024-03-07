@@ -60,14 +60,13 @@ def main() -> None:
     print("Generating Cards...")
     suits: list[tuple[str, str]] = [('spade', 'black'), ('club', 'black'), ('diamond', 'red'), ('heart', 'red')]
     ranks: list[str] = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king']
-    cards: list[Card] = [Card(suit, rank)for rank in ranks for suit in suits ]
+    cards: list[Card] = [Card(suit, rank) for rank in ranks for suit in suits]
     for card in cards:
         try:
             card.generate_card_image()
             print(card.image_out_name, "Generated.")
         except:
             print(card.image_out_name, "Failed.")
-    
     print("Card Generation Completed.")
 
 if __name__ == '__main__':
