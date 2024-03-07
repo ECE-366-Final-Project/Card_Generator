@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageColor
+from PIL import Image, ImageDraw
 
 class Card:
     background_dir: str = 'Background/'
@@ -43,7 +43,7 @@ class Card:
         return
     
 def generate_background(save_dir: str, save_name: str, border_color: str = 'black', fill_color: str = 'white', 
-                        bg_w: int = 325, bg_h: int = 455, rad: int = 33, border_width: int = 3) -> None:
+                        bg_w: int = 325, bg_h: int = 455, rad: int = 33, border_width: int = 4) -> None:
     bg = Image.new("RGBA", (bg_w, bg_h), (0, 0, 0, 0))
     draw = ImageDraw.Draw(bg)
     draw.rounded_rectangle((0, 0, bg_w, bg_h), fill=fill_color, outline=border_color, width=border_width, radius=rad)
@@ -61,7 +61,7 @@ def main() -> None:
     print("Generating Cards...")
     suits: list[tuple[str, str]] = [('spade', 'black'), ('club', 'black'), ('diamond', 'red'), ('heart', 'red')]
     ranks: list[str] = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king']
-    cards: list[Card] = [Card(suit, rank) for suit in suits for rank in ranks]
+    cards: list[Card] = [Card(suit, rank)for rank in ranks for suit in suits ]
     for card in cards:
         card.generate_card_image()
         print(card.image_out_name, "Generated.")
