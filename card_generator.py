@@ -40,7 +40,6 @@ class Card:
         card_img.paste(suit_img_center, (((card_w - suit_center_w) // 2, (card_h - suit_center_h) // 2)), suit_img_center)
         # --------------------------
         card_img.save(self.image_out_name)
-        return
     
 def generate_background(save_dir: str, save_name: str, border_color: str = 'black', fill_color: str = 'white', 
                         bg_w: int = 325, bg_h: int = 455, rad: int = 33, border_width: int = 4) -> None:
@@ -63,9 +62,12 @@ def main() -> None:
     ranks: list[str] = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king']
     cards: list[Card] = [Card(suit, rank)for rank in ranks for suit in suits ]
     for card in cards:
-        card.generate_card_image()
-        print(card.image_out_name, "Generated.")
-    print("Card Generation Completed.")
+        try:
+            card.generate_card_image()
+            print(card.image_out_name, "Generated.")
+            print("Card Generation Completed.")
+        except:
+            print(card, "Failed.")
 
 if __name__ == '__main__':
     main()
