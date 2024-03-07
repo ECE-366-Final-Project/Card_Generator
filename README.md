@@ -1,2 +1,2 @@
-# Card_Generator_PRIVATE
-Card Generator (PRIVATE, DO NOT MAKE PUBLIC) 
+# Card_Generator
+Card Generator
