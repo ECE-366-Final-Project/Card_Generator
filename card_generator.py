@@ -1,3 +1,12 @@
+# Python Card Generator Library
+# Evan Rosenfeld
+# 
+# Default Directory Structure:
+# ./Cards -> Card image output (2-9, 1=10, J=jack, Q=queen, K=king)(H=heart, C=club, D=diamond, S=spade).png
+# ./Background -> Background image output
+# ./Rank -> Holds all rank images (2-10, jack, queen, king, ace).png
+# ./Suit -> Holds all suit images (heart, club, diamond, spade).png
+
 from PIL import Image, ImageDraw
 
 class Card:
@@ -10,7 +19,7 @@ class Card:
         self.rank_image: str = f"{self.rank_dir}{rank}_{suit[1]}.png"
         self.suit_image: str = f"{self.suit_dir}{suit[0]}.png"
         self.background_image: str = f"{self.background_dir}background_{suit[1]}{bg_style}.png"
-        # NOTE 1 -> 10
+        # NOTE 1H is 10 of Hearts
         self.image_out_name: str = f"{self.save_dir}{rank[0].upper()}{suit[0][0].upper()}.png"
     def __str__(self) -> str:
         return f"{self.image_out_name}, {self.suit_image}, {self.rank_image}"
