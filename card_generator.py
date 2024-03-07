@@ -65,9 +65,10 @@ def main() -> None:
         try:
             card.generate_card_image()
             print(card.image_out_name, "Generated.")
-            print("Card Generation Completed.")
         except:
-            print(card, "Failed.")
+            print(card.image_out_name, "Failed.")
+    
+    print("Card Generation Completed.")
 
 if __name__ == '__main__':
     main()
